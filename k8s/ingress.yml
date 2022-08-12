@@ -9,13 +9,13 @@ metadata:
     alb.ingress.kubernetes.io/backend-protocol: HTTP
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/ssl-redirect: "443"
-    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:512197556583:certificate/f6b4374b-7b8c-4793-969f-2a5d9a8cb7f9"
-    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-2016-08
+    alb.ingress.kubernetes.io/certificate-arn: ""
+    alb.ingress.kubernetes.io/ssl-policy: 
     alb.ingress.kubernetes.io/tags: env=prod
 spec:
   ingressClassName: alb
   rules:
-  - host: "alexa.wihops.io"
+  - host: "your.domain.com"
     http:
       paths:
       - path: /

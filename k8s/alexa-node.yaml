@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: alexa-node-app
-        image: 512197556583.dkr.ecr.us-east-1.amazonaws.com/ux-prod-repo:alexa-app
+        image: <docker build image built from Dockerfile>
         ports:
         - containerPort: 3000
 ---
