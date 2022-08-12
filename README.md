@@ -1,7 +1,7 @@
 # alexa-nodejs
 
 ## ServiceMap/ Architecture Design
-![alt text](./images/10.png)
+![alt text](./images/11.png)
 
 ## Creating a Skill on Alexa Developer Console
 ### Prerequisites: 
