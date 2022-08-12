@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "alexa-node-app-ingress"
+  annotations:
+    app: "alexa-node-app"
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:512197556583:certificate/f6b4374b-7b8c-4793-969f-2a5d9a8cb7f9"
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-2016-08
+    alb.ingress.kubernetes.io/tags: env=prod
+spec:
+  ingressClassName: alb
+  rules:
+  - host: "alexa.wihops.io"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: "node-app-service" 
+            port:
+              number: 3001

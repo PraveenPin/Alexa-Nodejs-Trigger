@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+  labels:
+    app: alexa-node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alexa-node-app
+  template:
+    metadata:
+      labels:
+        app: alexa-node-app
+    spec:
+      containers:
+      - name: alexa-node-app
+        image: 512197556583.dkr.ecr.us-east-1.amazonaws.com/ux-prod-repo:alexa-app
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app-service
+spec:
+  selector:
+    app: alexa-node-app
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 3001
+    targetPort: 3000
+    # nodePort: 31110
